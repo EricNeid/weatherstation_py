@@ -1,0 +1,187 @@
+WeatherStationScreenManager:
+    SlideShow:
+    WeatherGui:
+
+<SlideShow>:
+    name: "screen_slideshow"
+    slide: slide
+    clock: ""
+    FloatLayout:
+        Image:
+            id: slide
+            keep_data: True
+            allow_stretch: True
+            keep_ratio: True
+            nocache: True
+            on_touch_down: root.show_weather_gui_screen()
+        AnchorLayout:
+            pos_hint: { "bottom": 1, "right": 1 }
+            size_hint: None, None
+            height: 30
+            width: 140
+            padding: 0, 0, 20, 20
+            Label:
+                text: "[b]{}[/b]".format(root.clock)
+                markup: True
+
+<WeatherGui>:
+    name: "screen_weather"
+    clock: ""
+    timestamp: ""
+    current_temperature: ""
+    today_weather_background: today_weather_background
+
+    today_daytime_temperature: ""
+    today_min_temperature: ""
+    today_max_temperature: ""
+    today_weather: today_weather
+
+    day_1_daytime_temperature: ""
+    day_1_min_temperature: ""
+    day_1_max_temperature: ""
+    day_1_weather: day_1_weather
+
+    day_2_daytime_temperature: ""
+    day_2_min_temperature: ""
+    day_2_max_temperature: ""
+    day_2_weather: day_2_weather
+
+    FloatLayout:
+        Image:
+            id: today_weather_background
+            size_hint: 1,1
+            allow_stretch: True
+            keep_ratio: False
+            on_touch_down: root.show_slide_show_screen()
+
+        AnchorLayout:
+            pos_hint: { "top": 1 }
+            size_hint: 1, None
+            Label:
+                text: "[b]Berlin[/b]"
+                font_size: "24sp"
+                markup: True
+        AnchorLayout:
+            pos_hint: { "top": 0.95 }
+            size_hint: 1, None
+            Label:
+                text: "aktuelle Temperatur: {}\u00b0".format(root.current_temperature)
+                font_size: "16sp"
+        AnchorLayout:
+            pos_hint: { "bottom": 1 }
+            size_hint: 1, None
+            padding: 0, 70, 0, 20
+            Label:
+                text: "Stand: {}".format(root.timestamp)
+                font_size: "14sp"
+        AnchorLayout:
+            pos_hint: { "bottom": 1, "left": 1 }
+            size_hint: None, None
+            height: 40
+            width: 120
+            padding: 20, 0, 0, 10
+            Button:
+                text: "Schlie\u00dfen"
+                font_size: "12sp"
+                on_press: app.stop()
+        AnchorLayout:
+            pos_hint: { "bottom": 1, "right": 1 }
+            size_hint: None, None
+            height: 30
+            width: 140
+            padding: 0, 0, 20, 20
+            Label:
+                text: "[b]{}[/b]".format(root.clock)
+                markup: True
+
+        BoxLayout:
+            pos_hint: { "top": 0.75 }
+            size_hint: 1, None
+            orientation: "horizontal"
+            height: 280
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "[b]Heute[/b]"
+                    font_size: "24sp"
+                    markup: True
+                Label:
+                    text: "[b]Tagestemperatur: {} \u00b0[/b]".format(root.today_daytime_temperature)
+                    font_size: "18sp"
+                    markup: True
+                Label:
+                    text: "Tiefsttemperatur: {} \u00b0".format(root.today_min_temperature)
+                    font_size: "18sp"
+                    markup: True
+                Label:
+                    text: "H\u00f6chsttemperatur: {} \u00b0".format(root.today_max_temperature)
+                    font_size: "18sp"
+                    markup: True
+                AnchorLayout:
+                    anchor_x: "center"
+                    AsyncImage:
+                        id: today_weather
+                        nocache: True
+                        size_hint: None, None
+                        allow_stretch: True
+                        keep_ratio: False
+                        height: 60
+                        width: 60
+
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "[b]Morgen[/b]"
+                    font_size: "24sp"
+                    markup: True
+                Label:
+                    text: "[b]Tagestemperatur: {} \u00b0[/b]".format(root.day_1_daytime_temperature)
+                    font_size: "18sp"
+                    markup: True
+                Label:
+                    text: "Tiefsttemperatur: {} \u00b0".format(root.day_1_min_temperature)
+                    font_size: "18sp"
+                    markup: True
+                Label:
+                    text: "H\u00f6chsttemperatur: {} \u00b0".format(root.day_1_max_temperature)
+                    font_size: "18sp"
+                    markup: True
+                AnchorLayout:
+                    anchor_x: "center"
+                    AsyncImage:
+                        id: day_1_weather
+                        nocache: True
+                        size_hint: None, None
+                        allow_stretch: True
+                        keep_ratio: False
+                        height: 60
+                        width: 60
+
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "[b]\u00dcbermorgen[/b]"
+                    font_size: "24sp"
+                    markup: True
+                Label:
+                    text: "[b]Tagestemperatur: {} \u00b0[/b]".format(root.day_2_daytime_temperature)
+                    font_size: "18sp"
+                    markup: True
+                Label:
+                    text: "Tiefsttemperatur: {} \u00b0".format(root.day_2_min_temperature)
+                    font_size: "18sp"
+                    markup: True
+                Label:
+                    text: "H\u00f6chsttemperatur: {} \u00b0".format(root.day_2_max_temperature)
+                    font_size: "18sp"
+                    markup: True
+                AnchorLayout:
+                    anchor_x: "center"
+                    AsyncImage:
+                        id: day_2_weather
+                        nocache: True
+                        size_hint: None, None
+                        allow_stretch: True
+                        keep_ratio: False
+                        height: 60
+                        width: 60
