@@ -5,15 +5,15 @@ import os
 import datetime
 import threading
 
-import utils
-import api_openweather
-import model
-
 import kivy.app
 import kivy.uix.screenmanager
 import kivy.core.window
 import kivy.clock
 import kivy.logger
+
+import utils
+import api_openweather
+import model
 
 from kivy.properties import ObjectProperty, StringProperty
 
@@ -21,7 +21,7 @@ from kivy.properties import ObjectProperty, StringProperty
 INTERVAL_READ_WEATHER_DATA_SEC = 15 * 60
 INTERVAL_SCREENSAVER_SEC = 30
 INTERVAL_CHECK_CURRENT_SCREEN_SEC = 60 * 60
-INTERVALL_UPDATE_CLOCK_SEC = 60
+INTERVAL_UPDATE_CLOCK_SEC = 60
 
 DELAY_OPEN_SCREENSAVER_SEC = 120
 
@@ -250,11 +250,11 @@ class WeatherStationApp(kivy.app.App):
         # update displayed time
         kivy.clock.Clock.schedule_interval(
             slideshow.update_clock,
-            INTERVALL_UPDATE_CLOCK_SEC
+            INTERVAL_UPDATE_CLOCK_SEC
         )
         kivy.clock.Clock.schedule_interval(
             weather_gui.update_clock,
-            INTERVALL_UPDATE_CLOCK_SEC
+            INTERVAL_UPDATE_CLOCK_SEC
         )
         # next screensaver slide
         kivy.clock.Clock.schedule_interval(
@@ -309,6 +309,6 @@ if __name__ == "__main__":
     utils.set_locale_de()
 
     kivy.core.window.Window.size = (800, 480)
-    kivy.core.window.Window.fullscreen = True
+    #kivy.core.window.Window.fullscreen = True
 
     WeatherStationApp(LOCATION, read_api_key(API_KEY_FILE)).run()
