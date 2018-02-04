@@ -8,6 +8,5 @@ kivy.deps.glew
 kivy.deps.gstreamer
 kivy
 lxml
-
 aiounittest
 nose
