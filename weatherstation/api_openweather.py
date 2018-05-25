@@ -56,7 +56,7 @@ def __get_url_params(city, api_key):
 class RetrieveWeatherDataException(Exception):
     """
     RetrieveWeatherDataException is raised if the download of weather data fails.
-    This is usually the case if an connection error occures or in case of a timeout.
+    This is usually the case if an connection error occurs or in case of a timeout.
     """
     def __init__(self, *args, **kwargs):
         Exception.__init__(self, *args, **kwargs)

@@ -50,7 +50,7 @@ API_KEY_FILE = "./weatherstation/assets/api.key"
 def log_i(func):
     """log_i provides a decorator for logging"""
     def log_wrapper(*args, **kwargs):
-        """preseced function call to kivy log"""
+        """send function call to kivy log"""
         log_entry = "{}()".format(func.__name__)
         kivy.logger.Logger.info(log_entry)
         return func(*args, **kwargs)
