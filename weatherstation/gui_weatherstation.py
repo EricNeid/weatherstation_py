@@ -309,6 +309,6 @@ if __name__ == "__main__":
     utils.set_locale_de()
 
     kivy.core.window.Window.size = (800, 480)
-    #kivy.core.window.Window.fullscreen = True
+    kivy.core.window.Window.fullscreen = True
 
     WeatherStationApp(LOCATION, read_api_key(API_KEY_FILE)).run()

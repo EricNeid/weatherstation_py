@@ -76,7 +76,7 @@ class WeatherData:
         except KeyError as error:
             raise ParseWeatherDataException(
                 "Forecast data is not as expected: " + str(error) + "\n" +
-                "Received: " + json_forecast
+                "Received: " + str(json_forecast)
             )
 
 
