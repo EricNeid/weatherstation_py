@@ -4,6 +4,7 @@
 import os
 import datetime
 import threading
+import platform
 
 import kivy.app
 import kivy.uix.screenmanager
@@ -309,6 +310,7 @@ if __name__ == "__main__":
     utils.set_locale_de()
 
     kivy.core.window.Window.size = (800, 480)
-    kivy.core.window.Window.fullscreen = True
+    if platform.system() != "Windows":
+        kivy.core.window.Window.fullscreen = True
 
     WeatherStationApp(LOCATION, read_api_key(API_KEY_FILE)).run()

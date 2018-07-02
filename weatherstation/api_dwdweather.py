@@ -15,13 +15,13 @@ HEADER = {
     )
 }
 
-async def download_webpage():
+def download_webpage():
     """Returns coroutine to download the content dwd webpage in bytes"""
     response = requests.get(DWD_WEBPAGE_URL, headers=HEADER)
     return response.content
 
 
-async def scrap_weather_nodes_from_html(html_bytes):
+def scrap_weather_nodes_from_html(html_bytes):
     """Returns [string] of all nodes in the 'wettertext' div of the given html"""
     assert isinstance(html_bytes, bytes)
 
@@ -66,19 +66,13 @@ def cleanup_scrapped_weather_data(nodes):
     return [filtered[i] for i in range(3, len(filtered) - 1)] # remove dwd header
 
 
-async def download_dwd_weather_data():
+def download_dwd_weather_data():
     """
     returns coroutine for [string] containing weather information of dwd (german weather)
     """
-    raw_html = await download_webpage()
-    raw_weather_information = await scrap_weather_nodes_from_html(raw_html)
+    raw_html = download_webpage()
+    raw_weather_information = scrap_weather_nodes_from_html(raw_html)
     result = cleanup_scrapped_weather_data(raw_weather_information)
     return result
 
-
-import asyncio
-
-loop = asyncio.get_event_loop()  
-loop.run_until_complete(download_dwd_weather_data())
-loop.close()
-
+download_dwd_weather_data()

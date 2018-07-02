@@ -2,30 +2,24 @@
 
 """Testing module api_dwdweather"""
 import unittest
-import aiounittest
-import asyncio
 
 import context
 import api_dwdweather
 
 
-class TestApiDwdWeather(aiounittest.AsyncTestCase):
+class TestApiDwdWeather(unittest.TestCase):
 
-    def setUp(self):
-        self.loop = asyncio.new_event_loop()
-
-
-    async def test_download_webpage(self):
-        result = await api_dwdweather.download_webpage()
+    def test_download_webpage(self):
+        result = api_dwdweather.download_webpage()
 
         self.assertIsNotNone(result)
         self.assertIn("<!DOCTYPE html>", str(result))
 
 
-    async def test_scrap_weather_nodes_from_html(self):
+    def test_scrap_weather_nodes_from_html(self):
         test_data = bytes('<div id="wettertext"><h3>foo</h3><h2>bar</h2></div>', 'utf-8')
 
-        result = await api_dwdweather.scrap_weather_nodes_from_html(test_data)
+        result = api_dwdweather.scrap_weather_nodes_from_html(test_data)
 
         self.assertCountEqual(["foo", "bar"], result)
 
@@ -48,8 +42,8 @@ class TestApiDwdWeather(aiounittest.AsyncTestCase):
         self.assertNotIn("", result)
 
 
-    async def test_download_dwd_weather_data(self):
-        result = await api_dwdweather.download_dwd_weather_data()
+    def test_download_dwd_weather_data(self):
+        result = api_dwdweather.download_dwd_weather_data()
 
         self.assertTrue(len(result) > 0)
 
