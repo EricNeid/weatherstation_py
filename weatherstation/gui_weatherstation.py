@@ -12,11 +12,11 @@ import kivy.core.window
 import kivy.clock
 import kivy.logger
 
+from kivy.properties import ObjectProperty, StringProperty
+
 import utils
 import api_openweather
 import model
-
-from kivy.properties import ObjectProperty, StringProperty
 
 
 INTERVAL_READ_WEATHER_DATA_SEC = 15 * 60
