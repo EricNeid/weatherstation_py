@@ -1,12 +1,15 @@
 PYTHON=python
 
 init:
-	pip install -r requirements.txt
+	pip install pipenv
+
+install:
+	pipenv install --dev
 
 test:
-	nosetests
+	pipenv run nosetests
 
 run:
-	$(PYTHON) weatherstation/gui_weatherstation.py
+	pipenv run $(PYTHON) weatherstation/gui_weatherstation.py
 
-.PHONY: init test
+.PHONY: init install test
