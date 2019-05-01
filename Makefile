@@ -1,15 +1,19 @@
 PYTHON=python
+PIP=pip
 
 init:
-	pip install pipenv
+	$(PIP) install pipenv
 
 install:
-	pipenv install --dev
+	pipenv install --dev --python 3
 
 test:
-	pipenv run nosetests
+	pipenv run nosetests 
 
 run:
 	pipenv run $(PYTHON) weatherstation/gui_weatherstation.py
 
-.PHONY: init install test
+clean:
+	pipenv clean
+
+.PHONY: init install test clean

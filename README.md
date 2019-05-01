@@ -1,10 +1,18 @@
 # WeatherStation
 
-This is a small application using python kivy and openweathermap to display the current weather nad forecast.
+This is a small application using python kivy and openweathermap to display the current weather and forecast.
 
 ## Dependencies
 
-It uses pyenv for managing the dependencies. Please have a look at the Pipfile.
+It uses pipenv for managing the dependencies and requires python3. Please have a look at the Pipfile.
+
+## Installing
+
+The requirements can be installed using the provided makefile.
+
+If you are using linux, you can set the name of your python exectuable and pip executable in the makefile (for example PYTHON=python3).
+
+You should also set the python version in Pipfile. Get your version by using **python3 --version**.
 
 ## using raspberry touch display
 
