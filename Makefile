@@ -1,19 +1,17 @@
-PYTHON=python
-PIP=pip
-
 init:
-	$(PIP) install pipenv
+	sudo apt-get install python3-kivy 
+	pip install pipenv
 
 install:
-	pipenv install --dev --python 3
+	pipenv install --dev
 
 test:
 	pipenv run nosetests 
 
 run:
-	pipenv run $(PYTHON) weatherstation/gui_weatherstation.py
+	pipenv run python weatherstation/gui_weatherstation.py
 
 clean:
 	pipenv clean
 
-.PHONY: init install test clean
+.PHONY: install-pipenv install test clean
