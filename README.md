@@ -8,11 +8,26 @@ It uses pipenv for managing the dependencies and requires python3. Please have a
 
 ## Installing
 
-The requirements can be installed using the provided makefile.
+The requirements can be installed using the provided makefile or manually.
 
-If you are using linux, you can set the name of your python exectuable and pip executable in the makefile (for example PYTHON=python3).
+```bash
+pip install --user pipenv
+pipenv install --dev
+```
 
-You should also set the python version in Pipfile. Get your version by using **python3 --version**.
+## Testing
+
+Tests require that you provide openweathermap api key in assets/api.key for testing.
+
+```bash
+pipenv run nosetests
+```
+
+## Run application
+
+```bash
+pipenv run python weatherstation/gui_weatherstation.py
+```
 
 ## using raspberry touch display
 
