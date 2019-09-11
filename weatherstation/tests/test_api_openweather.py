@@ -8,7 +8,7 @@ from weatherstation import api_openweather
 
 
 class TestApiOpenWeather(unittest.TestCase):
-    real_key = os.path.abspath("./weatherstation/assets/api.key")
+    real_key = os.path.abspath("./weatherstation/resources/api.key")
 
     def test_download_weather_data(self):
         """

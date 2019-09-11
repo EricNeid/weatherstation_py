@@ -7,9 +7,20 @@ import os
 from weatherstation import utils
 
 
+class TestUtils(unittest.TestCase):
+    test_data_dir = os.path.abspath("./weatherstation/tests/testdata")
+    test_key = os.path.join(test_data_dir, "key.txt")
+
+    def test_read_api_key(self):
+        """should return content of api key file"""
+        key = utils.read_api_key(self.test_key)
+
+        self.assertEqual("1234567890", key)
+
+
 class TestFileRingList(unittest.TestCase):
     """Testsuite for class FileRingList"""
-    test_data_dir = os.path.abspath("./tests/test_data_utils")
+    test_data_dir = os.path.abspath("./weatherstation/tests/testdata/fileringlist")
     test_data = [
         os.path.join(test_data_dir, "a.txt"),
         os.path.join(test_data_dir, "b.txt"),
