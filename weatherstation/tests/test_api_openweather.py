@@ -3,8 +3,8 @@
 """Testing module api_openweather"""
 import unittest
 import os
-import context
-import api_openweather
+
+from weatherstation import api_openweather
 
 
 class TestApiOpenWeather(unittest.TestCase):

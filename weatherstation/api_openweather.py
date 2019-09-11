@@ -3,7 +3,7 @@ Get wether data from OpenWetherMap
 http://openweathermap.org/help/city_list.txt
 """
 import requests
-import model
+from weatherstation import model
 
 
 API_ENDPOINT_TEMPERATURE = "http://api.openweathermap.org/data/2.5/weather"

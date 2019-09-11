@@ -3,8 +3,7 @@
 """Testing module api_dwdweather"""
 import unittest
 
-import context
-import api_dwdweather
+from weatherstation import api_dwdweather
 
 
 class TestApiDwdWeather(unittest.TestCase):

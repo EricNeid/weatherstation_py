@@ -4,7 +4,6 @@
 import os
 import datetime
 import threading
-import platform
 
 import kivy.app
 import kivy.uix.screenmanager
@@ -13,10 +12,9 @@ import kivy.clock
 import kivy.logger
 
 from kivy.properties import ObjectProperty, StringProperty
-
-import utils
-import api_openweather
-import model
+from weatherstation import utils
+from weatherstation import api_openweather
+from weatherstation import model
 
 
 INTERVAL_READ_WEATHER_DATA_SEC = 15 * 60
@@ -44,9 +42,6 @@ BACKGROUND_WEATHER_MAP = {
     "8" : "./assets/background/background_clear.jpg",
     "9" : "./assets/background/background_tornado.jpg"
 }
-
-LOCATION = "Erkner,de"
-API_KEY_FILE = "./weatherstation/assets/api.key"
 
 def log_i(func):
     """log_i provides a decorator for logging"""
@@ -295,22 +290,3 @@ class WeatherStationApp(kivy.app.App):
     def get_weather_data(self):
         """downloads data for the given location"""
         return api_openweather.download_weather_data(self.city, self.api_key)
-
-
-def read_api_key(path):
-    """read api key from given path"""
-    path = os.path.abspath(path)
-    if not os.path.exists(path):
-        raise ValueError("no key found at given path: " + path)
-    with open(path) as f:
-        return f.readline().strip()
-
-
-if __name__ == "__main__":
-    utils.set_locale_de()
-
-    kivy.core.window.Window.size = (800, 480)
-    if platform.system() != "Windows":
-        kivy.core.window.Window.fullscreen = True
-
-    WeatherStationApp(LOCATION, read_api_key(API_KEY_FILE)).run()

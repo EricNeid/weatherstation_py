@@ -3,7 +3,8 @@ Model classes for weather information
 """
 
 import jsonpickle
-import utils
+
+from weatherstation import utils
 
 class WeatherDataDaily:
     """

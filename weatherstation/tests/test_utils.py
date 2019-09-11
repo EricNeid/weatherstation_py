@@ -3,8 +3,8 @@
 """Testing module utils"""
 import unittest
 import os
-import context
-import utils
+
+from weatherstation import utils
 
 
 class TestFileRingList(unittest.TestCase):

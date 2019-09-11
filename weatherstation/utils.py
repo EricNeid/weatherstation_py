@@ -6,6 +6,13 @@ import platform
 import locale
 import time
 
+def read_api_key(path):
+    """read api key from given path"""
+    path = os.path.abspath(path)
+    if not os.path.exists(path):
+        raise ValueError("no key found at given path: " + path)
+    with open(path) as f:
+        return f.readline().strip()
 
 class FileRingList:
     """List of filename, created from given directory"""
