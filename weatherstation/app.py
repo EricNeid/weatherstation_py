@@ -4,7 +4,7 @@ import platform
 from weatherstation import utils, gui_weatherstation
 
 LOCATION = "Erkner,de"
-API_KEY_FILE = "./weatherstation/assets/api.key"
+API_KEY_FILE = "./weatherstation/resources/api.key"
 
 def run():
     utils.set_locale_de()

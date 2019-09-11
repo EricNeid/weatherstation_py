@@ -8,7 +8,7 @@ tests:
 	pipenv run nosetests
 
 run:
-	pipenv run python weatherstation/gui_weatherstation.py
+	pipenv run python -m weatherstation
 
 clean:
 	pipenv clean
