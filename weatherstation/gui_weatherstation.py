@@ -31,16 +31,16 @@ HOURS_SHOW_WEATHER_DEFAULT = range(
 )
 
 
-DIRS_SCREENSAVER = "./weatherstation/screensaver"
+DIRS_SCREENSAVER = "./weatherstation/resources/screensaver"
 
 BACKGROUND_WEATHER_MAP = {
-    "2" : "./assets/background/background_thunder.jpg",
-    "3" : "./assets/background/background_drizzle.jpg",
-    "5" : "./assets/background/background_rain.jpg",
-    "6" : "./assets/background/background_snow.jpg",
-    "7" : "./assets/background/background_mist.jpg",
-    "8" : "./assets/background/background_clear.jpg",
-    "9" : "./assets/background/background_tornado.jpg"
+    "2" : "./resources/assets/background/background_thunder.jpg",
+    "3" : "./resources/assets/background/background_drizzle.jpg",
+    "5" : "./resources/assets/background/background_rain.jpg",
+    "6" : "./resources/assets/background/background_snow.jpg",
+    "7" : "./resources/assets/background/background_mist.jpg",
+    "8" : "./resources/assets/background/background_clear.jpg",
+    "9" : "./resources/assets/background/background_tornado.jpg"
 }
 
 def log_i(func):
