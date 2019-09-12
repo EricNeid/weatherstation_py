@@ -4,7 +4,7 @@
 import unittest
 import os
 
-from weatherstation import utils
+from weatherstation.misc import utils
 
 
 class TestUtils(unittest.TestCase):

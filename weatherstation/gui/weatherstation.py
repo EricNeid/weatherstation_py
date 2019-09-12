@@ -12,7 +12,7 @@ import kivy.clock
 import kivy.logger
 
 from kivy.properties import ObjectProperty, StringProperty
-from weatherstation import utils
+from weatherstation.misc import utils
 from weatherstation.api import weatherdata
 from weatherstation.api import openweather
 

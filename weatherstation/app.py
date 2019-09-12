@@ -2,7 +2,7 @@ import kivy.app
 import platform
 
 from weatherstation.gui import weatherstation
-from weatherstation import utils
+from weatherstation.misc import utils
 
 LOCATION = "Erkner,de"
 API_KEY_FILE = "./weatherstation/resources/api.key"
