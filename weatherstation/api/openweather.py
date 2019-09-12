@@ -3,7 +3,8 @@ Get wether data from OpenWetherMap
 http://openweathermap.org/help/city_list.txt
 """
 import requests
-from weatherstation import model
+
+from weatherstation.api import weatherdata
 
 
 API_ENDPOINT_TEMPERATURE = "http://api.openweathermap.org/data/2.5/weather"
@@ -41,7 +42,7 @@ def download_weather_data(city, api_key):
             "Could not download forecast data, cause of: " + str(error)
         )
 
-    return model.WeatherData(temperature_json, forecast_json)
+    return weatherdata.WeatherData(temperature_json, forecast_json)
 
 
 def get_url_for_weather(weather_icon):

@@ -13,7 +13,7 @@ import kivy.logger
 
 from kivy.properties import ObjectProperty, StringProperty
 from weatherstation import utils
-from weatherstation import model
+from weatherstation.api import weatherdata
 from weatherstation.api import openweather
 
 
@@ -176,7 +176,7 @@ class WeatherGui(kivy.uix.screenmanager.Screen):
         except openweather.RetrieveWeatherDataException as error:
             log_exception(error, "could not download data")
             return
-        except model.ParseWeatherDataException as error:
+        except weatherdata.ParseWeatherDataException as error:
             log_exception(error, "downloaded data does not contain expected json")
             return
 
