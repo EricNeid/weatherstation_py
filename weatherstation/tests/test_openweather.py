@@ -7,7 +7,7 @@ import os
 from weatherstation.api import openweather
 
 
-class TestApiOpenWeather(unittest.TestCase):
+class TestOpenWeather(unittest.TestCase):
     real_key = os.path.abspath("./weatherstation/resources/api.key")
 
     def test_download_weather_data(self):

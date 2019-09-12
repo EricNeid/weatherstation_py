@@ -6,7 +6,7 @@ import unittest
 from weatherstation.api import dwdweather
 
 
-class TestApiDwdWeather(unittest.TestCase):
+class TestDwdWeather(unittest.TestCase):
 
     def test_download_webpage(self):
         result = dwdweather.download_webpage()
