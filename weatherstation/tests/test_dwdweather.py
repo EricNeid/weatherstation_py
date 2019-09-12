@@ -3,13 +3,13 @@
 """Testing module api_dwdweather"""
 import unittest
 
-from weatherstation import api_dwdweather
+from weatherstation.api import dwdweather
 
 
 class TestApiDwdWeather(unittest.TestCase):
 
     def test_download_webpage(self):
-        result = api_dwdweather.download_webpage()
+        result = dwdweather.download_webpage()
 
         self.assertIsNotNone(result)
         self.assertIn("<!DOCTYPE html>", str(result))
@@ -18,7 +18,7 @@ class TestApiDwdWeather(unittest.TestCase):
     def test_scrap_weather_nodes_from_html(self):
         test_data = bytes('<div id="wettertext"><h3>foo</h3><h2>bar</h2></div>', 'utf-8')
 
-        result = api_dwdweather.scrap_weather_nodes_from_html(test_data)
+        result = dwdweather.scrap_weather_nodes_from_html(test_data)
 
         self.assertCountEqual(["foo", "bar"], result)
 
@@ -36,13 +36,13 @@ class TestApiDwdWeather(unittest.TestCase):
             'Nächste Aktualisierung: spätestens Mittwoch, 15.11.2017, 16:00 Uhr'
         ]
 
-        result = api_dwdweather.cleanup_scrapped_weather_data(test_data)
+        result = dwdweather.cleanup_scrapped_weather_data(test_data)
 
         self.assertNotIn("", result)
 
 
     def test_download_dwd_weather_data(self):
-        result = api_dwdweather.download_dwd_weather_data()
+        result = dwdweather.download_dwd_weather_data()
 
         self.assertTrue(len(result) > 0)
 

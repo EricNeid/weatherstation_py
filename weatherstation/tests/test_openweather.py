@@ -4,7 +4,7 @@
 import unittest
 import os
 
-from weatherstation import api_openweather
+from weatherstation.api import openweather
 
 
 class TestApiOpenWeather(unittest.TestCase):
@@ -18,7 +18,7 @@ class TestApiOpenWeather(unittest.TestCase):
         """
         key = self.__get_real_api_key()
 
-        result = api_openweather.download_weather_data("London", key)
+        result = openweather.download_weather_data("London", key)
 
         self.assertIsNotNone(result)
 

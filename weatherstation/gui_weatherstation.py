@@ -13,8 +13,8 @@ import kivy.logger
 
 from kivy.properties import ObjectProperty, StringProperty
 from weatherstation import utils
-from weatherstation import api_openweather
 from weatherstation import model
+from weatherstation.api import openweather
 
 
 INTERVAL_READ_WEATHER_DATA_SEC = 15 * 60
@@ -173,7 +173,7 @@ class WeatherGui(kivy.uix.screenmanager.Screen):
         """download weather data and trigger ui update"""
         try:
             self.weather_data = self.app.get_weather_data()
-        except api_openweather.RetrieveWeatherDataException as error:
+        except openweather.RetrieveWeatherDataException as error:
             log_exception(error, "could not download data")
             return
         except model.ParseWeatherDataException as error:
@@ -192,21 +192,21 @@ class WeatherGui(kivy.uix.screenmanager.Screen):
             self.today_daytime_temperature = self.weather_data.forecast[0].temperature_day
             self.today_min_temperature = self.weather_data.forecast[0].temperature_min
             self.today_max_temperature = self.weather_data.forecast[0].temperature_max
-            self.today_weather.source = api_openweather.get_url_for_weather(
+            self.today_weather.source = openweather.get_url_for_weather(
                 self.weather_data.forecast[0].condition_icon)
             self.today_weather.reload()
 
             self.day_1_daytime_temperature = self.weather_data.forecast[1].temperature_day
             self.day_1_min_temperature = self.weather_data.forecast[1].temperature_min
             self.day_1_max_temperature = self.weather_data.forecast[1].temperature_max
-            self.day_1_weather.source = api_openweather.get_url_for_weather(
+            self.day_1_weather.source = openweather.get_url_for_weather(
                 self.weather_data.forecast[1].condition_icon)
             self.day_1_weather.reload()
 
             self.day_2_daytime_temperature = self.weather_data.forecast[2].temperature_day
             self.day_2_min_temperature = self.weather_data.forecast[2].temperature_min
             self.day_2_max_temperature = self.weather_data.forecast[2].temperature_max
-            self.day_2_weather.source = api_openweather.get_url_for_weather(
+            self.day_2_weather.source = openweather.get_url_for_weather(
                 self.weather_data.forecast[2].condition_icon)
             self.day_2_weather.reload()
 
@@ -289,4 +289,4 @@ class WeatherStationApp(kivy.app.App):
 
     def get_weather_data(self):
         """downloads data for the given location"""
-        return api_openweather.download_weather_data(self.city, self.api_key)
+        return openweather.download_weather_data(self.city, self.api_key)
