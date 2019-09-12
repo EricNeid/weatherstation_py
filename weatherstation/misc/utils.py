@@ -1,10 +1,10 @@
 """utils for setting locale and getting well formated time"""
 
 import os
-import glob
 import platform
 import locale
 import time
+
 
 def read_api_key(path):
     """read api key from given path"""
@@ -13,34 +13,6 @@ def read_api_key(path):
         raise ValueError("no key found at given path: " + path)
     with open(path) as f:
         return f.readline().strip()
-
-class FileRingList:
-    """List of filename, created from given directory"""
-    fileNames = []
-    i = 0
-
-    def add_directory(self, directory):
-        """add files from directory"""
-        if not os.path.exists(directory):
-            raise ValueError("given directory does not exists: " + directory)
-        self.fileNames.extend(glob.glob(os.path.join(directory, '*')))
-
-
-    def current(self):
-        """return current file"""
-        if self.i >= len(self.fileNames):
-            return ''
-        else:
-            return self.fileNames[self.i]
-
-
-    def next(self):
-        """return next file"""
-        if self.i+1 >= len(self.fileNames):
-            self.i = 0
-        else:
-            self.i += 1
-        return self.current()
 
 
 def set_locale_de():

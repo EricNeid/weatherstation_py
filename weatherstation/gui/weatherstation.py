@@ -12,9 +12,8 @@ import kivy.clock
 import kivy.logger
 
 from kivy.properties import ObjectProperty, StringProperty
-from weatherstation.misc import utils
-from weatherstation.api import weatherdata
-from weatherstation.api import openweather
+from weatherstation.misc import utils, fileringlist
+from weatherstation.api import weatherdata, openweather
 
 
 INTERVAL_READ_WEATHER_DATA_SEC = 15 * 60
@@ -88,7 +87,7 @@ class WeatherStationScreenManager(kivy.uix.screenmanager.ScreenManager):
 class SlideShow(kivy.uix.screenmanager.Screen):
     """UI for Screensaver"""
     screenmanager = None
-    images = utils.FileRingList()
+    images = fileringlist.FileRingList()
 
     slide = ObjectProperty(None)
     clock = StringProperty(None)
