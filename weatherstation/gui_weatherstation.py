@@ -231,7 +231,7 @@ class WeatherStationApp(kivy.app.App):
         build app,
         connect screens and schedule updates
         """
-        self.load_kv("gui_weatherstation.kv")
+        self.load_kv("resources/gui_weatherstation.kv")
         self.screenmanager = self.root
 
         # init screens
